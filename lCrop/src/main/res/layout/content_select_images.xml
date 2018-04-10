@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.liang.lollipop.lcrop.activity.SelectImagesActivity"
+    tools:showIn="@layout/activity_select_images">
+    <fragment
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:name="com.liang.lollipop.lcrop.fragment.SelectImagesFragment"
+        android:id="@+id/activity_select_images_fragment"/>
+</FrameLayout>

@@ -1,0 +1,1 @@
+include ':app', ':lQR',':lBaseLib','lColorPalette','lCrop'

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="liang.lollipop.lqrdemo">
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <application
+        android:name=".LQRApplication"
+        android:allowBackup="true"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".activity.MainActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:roundIcon="@mipmap/ic_launcher_create_round"
+            android:icon="@mipmap/ic_launcher_create"
+            android:launchMode="singleInstance"
+            android:process=":create"
+            android:theme="@style/AppTheme.InoutModel">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:label="@string/title_activity_capture"
+            android:name=".activity.CaptureActivity"
+            android:screenOrientation="portrait"
+            android:roundIcon="@mipmap/ic_launcher_scan_round"
+            android:icon="@mipmap/ic_launcher_scan"
+            android:process=":capture"
+            android:launchMode="singleInstance"
+            android:theme="@style/AppTheme.InoutModel">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.QRResultActivity"
+            android:label="@string/title_activity_qrresult"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.InoutModel"/>
+
+    </application>
+
+</manifest>

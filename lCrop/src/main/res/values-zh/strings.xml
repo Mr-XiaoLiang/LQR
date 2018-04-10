@@ -1,0 +1,15 @@
+<resources>
+    <string name="title_activity_select_images">选择图片</string>
+    <string name="action_button_string">%1$s(%2$d/%3$d)</string>
+    <string name="action_done">完成</string>
+    <string name="alert_photo_permissions">您未授权使用读取储存空间的权限，无法获取您的相册，是否手动开启？</string>
+    <string name="alert_camera_permissions">拍照功能，需要调用相机权限与写入储存空间权限，是否手动开启？</string>
+    <string name="per_btn_no">不用了</string>
+    <string name="per_btn_yes">前往设置</string>
+    <string name="dialog_title_warning">提示</string>
+    <string name="msg_no_camera">未发现系统相机</string>
+    <string name="error_image_not_exist">图片错误</string>
+    <string name="error_image_size_too_little">请选择足够的照片</string>
+    <string name="error_image_size_too_much">您选择的图片太多</string>
+    <string name="title_activity_crop">剪裁图片</string>
+</resources>

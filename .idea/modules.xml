@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/LQRDemo.iml" filepath="$PROJECT_DIR$/LQRDemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lBaseLib/lBaseLib.iml" filepath="$PROJECT_DIR$/lBaseLib/lBaseLib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lColorPalette/lColorPalette.iml" filepath="$PROJECT_DIR$/lColorPalette/lColorPalette.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lCrop/lCrop.iml" filepath="$PROJECT_DIR$/lCrop/lCrop.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lQR/lQR.iml" filepath="$PROJECT_DIR$/lQR/lQR.iml" />
+    </modules>
+  </component>
+</project>

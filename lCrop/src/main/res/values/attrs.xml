@@ -1,0 +1,27 @@
+<resources>
+
+    <declare-styleable name="LCrop_LCropImageView">
+        <!-- 视窗与View相对的范围 -->
+        <attr name="windowHeightRatio" format="float" />
+        <attr name="windowWidthRatio" format="float" />
+
+        <!-- 视窗自身的横纵比 -->
+        <attr name="windowHeightWeight" format="integer" />
+        <attr name="windowWidthWeight" format="integer" />
+
+        <!-- 蒙版颜色 -->
+        <attr name="maskColor" format="color"/>
+
+        <!-- 蒙版的预选样式 -->
+        <attr name="maskStyle" format="integer">
+            <!-- 默认值，不指定蒙版 -->
+            <flag name="NONE" value="-1"/>
+            <!-- 矩形 -->
+            <flag name="RECTANGULAR" value="0"/>
+            <!-- 圆形 -->
+            <flag name="OVAL" value="1"/>
+        </attr>
+
+    </declare-styleable>
+
+</resources>

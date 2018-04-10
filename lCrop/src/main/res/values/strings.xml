@@ -1,0 +1,15 @@
+<resources>
+    <string name="title_activity_select_images">Choose Picture</string>
+    <string name="action_button_string">%1$s(%2$d/%3$d)</string>
+    <string name="action_done">Done</string>
+    <string name="alert_photo_permissions">Your storage space permissions, unauthorized use reading， can not get your photo albums, whether manual open？</string>
+    <string name="alert_camera_permissions">Camera, you need to call camera permissions and storage access rights, manually open?</string>
+    <string name="per_btn_no">No</string>
+    <string name="per_btn_yes">To set up</string>
+    <string name="dialog_title_warning">Warning</string>
+    <string name="msg_no_camera">No system camera found</string>
+    <string name="error_image_not_exist">Image error</string>
+    <string name="error_image_size_too_little">Please select enough photos</string>
+    <string name="error_image_size_too_much">You choose picture too much</string>
+    <string name="title_activity_crop">Crop Photo</string>
+</resources>
