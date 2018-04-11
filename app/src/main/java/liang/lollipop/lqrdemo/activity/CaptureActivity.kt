@@ -2,6 +2,7 @@ package liang.lollipop.lqrdemo.activity
 
 import android.animation.Animator
 import android.animation.ValueAnimator
+import android.app.Activity
 import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.Bitmap
@@ -20,6 +21,7 @@ import liang.lollipop.lqr.camera.CameraCallback
 import liang.lollipop.lqr.camera.CameraVersion
 import liang.lollipop.lqr.decode.CaptureCallback
 import liang.lollipop.lqr.decode.CaptureHandler
+import liang.lollipop.lqr.encode.QRUtils
 import liang.lollipop.lqrdemo.R
 import liang.lollipop.lqrdemo.utils.OtherUtils
 import liang.lollipop.lqrdemo.utils.SettingsUtil
@@ -228,13 +230,28 @@ class CaptureActivity : BaseActivity(),
         //如果使用新版API，在出现Dialog之后，相机连接会丢失，暂未找到原因，因此此处采用跳转新页面的方式。
         //在新的页面展示结果，当跳转回来时，重新建立相机连接。
         //如果仅使用老版API，则不用跳转到新的页面
-        val newIntent = Intent(this, QRResultActivity::class.java)
-        newIntent.putExtra(QRResultActivity.ARG_IMAGE_ROTETION,finderView.getRotetion())
-        if(barcode != null){
-            newIntent.putExtra(QRResultActivity.ARG_IMAGE_DATA, OtherUtils.Bitmap2Bytes(barcode))
+
+        if(intent.action == "com.google.zxing.client.android.SCAN"){
+            val resultIntent = Intent()
+            resultIntent.putExtra("SCAN_RESULT",result.text)
+            resultIntent.putExtra("SCAN_RESULT_FORMAT",result.barcodeFormat.toString())
+            if(barcode != null){
+                resultIntent.putExtra("SCAN_RESULT_BYTES",OtherUtils.Bitmap2Bytes(barcode))
+            }
+            resultIntent.putExtra("SCAN_RESULT_ORIENTATION",finderView.getRotetion())
+            resultIntent.putExtra("SCAN_RESULT_ERROR_CORRECTION_LEVEL","")
+            setResult(Activity.RESULT_OK,resultIntent)
+            onBackPressed()
+        }else{
+            val newIntent = Intent(this, QRResultActivity::class.java)
+            newIntent.putExtra(QRResultActivity.ARG_IMAGE_ROTETION,finderView.getRotetion())
+            if(barcode != null){
+                newIntent.putExtra(QRResultActivity.ARG_IMAGE_DATA, OtherUtils.Bitmap2Bytes(barcode))
+            }
+            newIntent.putExtra(QRResultActivity.ARG_TEXT_VALUE,result.text)
+            startActivityForResult(newIntent, REQUEST_SHOW)
         }
-        newIntent.putExtra(QRResultActivity.ARG_TEXT_VALUE,result.text)
-        startActivityForResult(newIntent, REQUEST_SHOW)
+
     }
 
     override fun selectCamera(cameraIds: Array<String>): String {

@@ -12,6 +12,29 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <activity
+            android:label="@string/title_activity_capture"
+            android:name=".activity.CaptureActivity"
+            android:screenOrientation="portrait"
+            android:roundIcon="@mipmap/ic_launcher_scan_round"
+            android:icon="@mipmap/ic_launcher_scan"
+            android:process=":capture"
+            android:launchMode="singleInstance"
+            android:theme="@style/AppTheme.InoutModel">
+            <intent-filter
+                android:icon="@mipmap/ic_launcher_scan_round"
+                android:label="@string/title_activity_capture">
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.DEFAULT"/>
+
+                <category android:name="android.intent.category.LAUNCHER" />
+
+                <action android:name="com.google.zxing.client.android.SCAN"/>
+            </intent-filter>
+        </activity>
+
         <activity
             android:name=".activity.MainActivity"
             android:label="@string/app_name"
@@ -27,21 +50,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:label="@string/title_activity_capture"
-            android:name=".activity.CaptureActivity"
-            android:screenOrientation="portrait"
-            android:roundIcon="@mipmap/ic_launcher_scan_round"
-            android:icon="@mipmap/ic_launcher_scan"
-            android:process=":capture"
-            android:launchMode="singleInstance"
-            android:theme="@style/AppTheme.InoutModel">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
         <activity
             android:name=".activity.QRResultActivity"
             android:label="@string/title_activity_qrresult"

@@ -180,4 +180,8 @@ object QRConstant {
         return data
     }
 
+    const val SCAN_CAMERA_ID = "SCAN_CAMERA_ID"
+
+    const val SCAN_FORMATS = "SCAN_FORMATS"
+
 }
