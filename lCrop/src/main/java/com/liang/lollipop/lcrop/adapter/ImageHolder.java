@@ -4,6 +4,8 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 import com.liang.lollipop.lcrop.R;
 import com.liang.lollipop.lcrop.bean.BaseBean;
 import com.liang.lollipop.lcrop.bean.ImageBean;
@@ -17,6 +19,8 @@ public class ImageHolder extends BaseHolder{
 
     public static final int LAYOUT_ID = R.layout.item_image;
     public static final int BODY_ID = R.id.item_image_body;
+
+    private RequestOptions requestOptions = new RequestOptions().skipMemoryCache(true).diskCacheStrategy(DiskCacheStrategy.NONE);
 
     private ImageView imageView;
     private CheckBox checkBox;
@@ -58,7 +62,7 @@ public class ImageHolder extends BaseHolder{
             checkBox.setVisibility(View.VISIBLE);
         }
         if(glide!=null) {
-            glide.load(bean.url).into(imageView);
+            glide.load(bean.url).apply(requestOptions).into(imageView);
         }
         if(bean.isChecked&&bean.index>0){
             checkBox.setText(bean.index+"");

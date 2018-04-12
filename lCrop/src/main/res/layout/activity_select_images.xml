@@ -17,7 +17,6 @@
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
             app:title="@string/title_activity_select_images"
-            android:layout_marginTop="@dimen/toolbar_top_margin"
             app:popupTheme="@style/AppTheme.PopupOverlay" >
             <TextView
                 android:id="@+id/activity_select_images_enter_btn"

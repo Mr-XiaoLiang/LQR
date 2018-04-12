@@ -88,8 +88,9 @@ public class SelectImagesFragment extends DialogFragment
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         initView();
-        if(loaderManager!=null)
+        if(loaderManager!=null) {
             loaderManager.initLoader(LOADER_ID, null, loaderCallback);
+        }
     }
 
     private void initView(){
@@ -107,16 +108,18 @@ public class SelectImagesFragment extends DialogFragment
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if(context instanceof OnImagesSelectedListener)
+        if(context instanceof OnImagesSelectedListener) {
             onImagesSelectedListener = (OnImagesSelectedListener) context;
+        }
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
         onImagesSelectedListener = null;
-        if(loaderManager!=null)
+        if(loaderManager!=null) {
             loaderManager.destroyLoader(LOADER_ID);
+        }
     }
 
     @Override
@@ -135,17 +138,21 @@ public class SelectImagesFragment extends DialogFragment
         ImageBean imageBean = imageBeen.get(index);
         switch (imageBean.type){
             case ImageBean.TYPE_CAMERA:
-                if(onImagesSelectedListener!=null)
+                if(onImagesSelectedListener!=null) {
                     onImagesSelectedListener.onCallCamera();
+                }
                 break;
             case ImageBean.TYPE_PHOTO:
-                if(selectImageBeen==null)
+                if(selectImageBeen==null) {
                     selectImageBeen = new ArrayList<>();
-                if(!imageBean.isChecked&&maxSelectedSize<=selectImageBeen.size())
+                }
+                if(!imageBean.isChecked&&maxSelectedSize<=selectImageBeen.size()) {
                     return;
+                }
                 imageBean.isChecked = !imageBean.isChecked;
-                if(imageBean.isChecked)
+                if(imageBean.isChecked) {
                     selectImageBeen.add(imageBean);
+                }
                 onSelectedImageChange();
                 onImageSelected(imageBean);
                 break;
@@ -164,16 +171,18 @@ public class SelectImagesFragment extends DialogFragment
             ImageBean imageBean = iterator.next();
             if(imageBean.isChecked){
                 int i = index++;
-                if(i == imageBean.index)
+                if(i == imageBean.index) {
                     continue;
+                }
                 imageBean.index = i;
             }else{
                 imageBean.index = 0;
                 iterator.remove();
             }
             int position = imageBeen.indexOf(imageBean);
-            if(position>=0)
+            if(position>=0) {
                 imageAdapter.notifyItemChanged(position);
+            }
         }
     }
 
@@ -198,8 +207,9 @@ public class SelectImagesFragment extends DialogFragment
 
     public void setColumns(int columns) {
         this.columns = columns;
-        if(recyclerView==null)
+        if(recyclerView==null) {
             return;
+        }
         RecyclerView.LayoutManager layoutManager = recyclerView.getLayoutManager();
         if(layoutManager instanceof GridLayoutManager){
             GridLayoutManager gridLayoutManager = (GridLayoutManager) layoutManager;
@@ -239,11 +249,13 @@ public class SelectImagesFragment extends DialogFragment
                     }
                     imageBeen.clear();
 
-                    if(selectImageBeen!=null)
+                    if(selectImageBeen!=null) {
                         selectImageBeen.clear();
+                    }
 
-                    if(isShowCamera)
+                    if(isShowCamera) {
                         imageBeen.add(new ImageBean(ImageBean.TYPE_CAMERA));
+                    }
 
                     data.moveToFirst();
                     do{
@@ -270,12 +282,13 @@ public class SelectImagesFragment extends DialogFragment
     };
 
     private void onImageSelected(ImageBean imageBean){
-        if(onImagesSelectedListener!=null)
+        if(onImagesSelectedListener!=null) {
             onImagesSelectedListener.onImageSelected(
                     selectImageBeen.size(),
                     selectImageBeen.indexOf(imageBean),
                     imageBeen.indexOf(imageBean),
                     imageBean==null?"":imageBean.url);
+        }
     }
 
     public void setMaxSelectedSize(int maxSelectedSize) {
@@ -283,28 +296,34 @@ public class SelectImagesFragment extends DialogFragment
     }
 
     public void setShowCamera(boolean showCamera) {
-        if(isShowCamera==showCamera)
+        if(isShowCamera==showCamera) {
             return;
+        }
         isShowCamera = showCamera;
-        if(imageBeen==null)
+        if(imageBeen==null) {
             return;
-        if(imageBeen.size()<1&&showCamera)
+        }
+        if(imageBeen.size()<1&&showCamera) {
             imageBeen.add(new ImageBean(ImageBean.TYPE_CAMERA));
+        }
         if(imageBeen.size()>0){
             if(showCamera){
-                if(imageBeen.get(0).type!=ImageBean.TYPE_CAMERA)
+                if(imageBeen.get(0).type!=ImageBean.TYPE_CAMERA) {
                     imageBeen.add(new ImageBean(ImageBean.TYPE_CAMERA));
+                }
             }else{
-                if(imageBeen.get(0).type==ImageBean.TYPE_CAMERA)
+                if(imageBeen.get(0).type==ImageBean.TYPE_CAMERA) {
                     imageBeen.remove(0);
+                }
             }
         }
     }
 
     public void setLoaderManager(LoaderManager loaderManager) {
         this.loaderManager = loaderManager;
-        if(loaderManager!=null&&loaderManager.getLoader(LOADER_ID)==null&&loaderCallback!=null)
+        if(loaderManager!=null&&loaderManager.getLoader(LOADER_ID)==null&&loaderCallback!=null) {
             loaderManager.initLoader(LOADER_ID, null, loaderCallback);
+        }
 
     }
 
