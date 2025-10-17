@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingVertical="8dp">
+
+        <com.lollipop.clip.RoundClipLayout
+            android:id="@+id/imageModeButton"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginVertical="8dp"
+            android:radius="16dp"
+            app:clipStrokeColor="#000"
+            app:clipStrokeEnable="true"
+            app:clipStrokeWidth="2dp">
+
+            <ImageView
+                android:id="@+id/imageModePreview"
+                android:layout_width="match_parent"
+                android:layout_height="72dp"
+                android:scaleType="centerCrop"
+                tools:src="#f00" />
+
+            <com.lollipop.widget.RoundBackgroundView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingHorizontal="24dp"
+                android:paddingVertical="8dp"
+                app:color="#8000"
+                app:round_radius="12dp"
+                app:round_type="absolute">
+
+                <ImageView
+                    android:id="@+id/imageModeIcon"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_outline_insert_photo_24" />
+
+            </com.lollipop.widget.RoundBackgroundView>
+
+            <com.lollipop.clip.RoundClipLayout
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_gravity="end|bottom"
+                app:leftTop="16dp">
+
+                <ImageView
+                    android:id="@+id/imageGravityButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#8000"
+                    android:padding="6dp"
+                    android:src="@drawable/ic_baseline_keyboard_double_arrow_down_24" />
+            </com.lollipop.clip.RoundClipLayout>
+
+        </com.lollipop.clip.RoundClipLayout>
+
+        <com.lollipop.clip.RoundClipLayout
+            android:id="@+id/colorModeButton"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginVertical="8dp"
+            android:radius="16dp"
+            app:clipStrokeColor="#000"
+            app:clipStrokeWidth="2dp">
+
+            <ImageView
+                android:id="@+id/colorModePreview"
+                android:layout_width="match_parent"
+                android:layout_height="72dp"
+                android:scaleType="centerCrop"
+                tools:src="#f00" />
+
+            <com.lollipop.widget.RoundBackgroundView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingHorizontal="24dp"
+                android:paddingVertical="8dp"
+                app:color="#8000"
+                app:round_radius="12dp"
+                app:round_type="absolute">
+
+                <ImageView
+                    android:id="@+id/colorModeIcon"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_baseline_palette_24" />
+
+            </com.lollipop.widget.RoundBackgroundView>
+
+        </com.lollipop.clip.RoundClipLayout>
+
+        <com.lollipop.clip.RoundClipLayout
+            android:id="@+id/noneModeButton"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginVertical="8dp"
+            android:radius="16dp"
+            app:clipStrokeColor="#000"
+            app:clipStrokeWidth="2dp">
+
+            <ImageView
+                android:id="@+id/noneModePreview"
+                android:layout_width="match_parent"
+                android:layout_height="72dp"
+                android:scaleType="centerCrop"
+                tools:src="#f00" />
+
+            <com.lollipop.widget.RoundBackgroundView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingHorizontal="24dp"
+                android:paddingVertical="8dp"
+                app:color="#8000"
+                app:round_radius="12dp"
+                app:round_type="absolute">
+
+                <ImageView
+                    android:id="@+id/noneModeIcon"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_baseline_close_24" />
+            </com.lollipop.widget.RoundBackgroundView>
+
+        </com.lollipop.clip.RoundClipLayout>
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

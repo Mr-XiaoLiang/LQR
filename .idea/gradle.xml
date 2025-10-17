@@ -11,8 +11,19 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/base" />
+            <option value="$PROJECT_DIR$/clip" />
+            <option value="$PROJECT_DIR$/colorRes" />
             <option value="$PROJECT_DIR$/core" />
+            <option value="$PROJECT_DIR$/faceIcon" />
+            <option value="$PROJECT_DIR$/fileChooser" />
+            <option value="$PROJECT_DIR$/fragmentHelper" />
+            <option value="$PROJECT_DIR$/insets" />
+            <option value="$PROJECT_DIR$/mobile" />
+            <option value="$PROJECT_DIR$/palette" />
+            <option value="$PROJECT_DIR$/pigment" />
+            <option value="$PROJECT_DIR$/privacy" />
             <option value="$PROJECT_DIR$/renderScript" />
+            <option value="$PROJECT_DIR$/widget" />
           </set>
         </option>
       </GradleProjectSettings>

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".floating.FloatingScanSettingsActivity">
+
+    <FrameLayout
+        android:id="@+id/actionBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/titleView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/title_floating_scan_settings"
+            android:textColor="?attr/colorOnBackground"
+            android:textSize="20sp"
+            app:fontFamily="@font/font_logo" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/backButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center_vertical|start"
+            android:layout_marginStart="16dp"
+            android:padding="12dp"
+            android:src="@drawable/ic_baseline_arrow_back_24"
+            app:tint="?attr/colorOnBackground" />
+
+    </FrameLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:ignore="contentDescription">
+
+        <LinearLayout
+            android:id="@+id/contentGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="16dp">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp">
+
+                <include
+                    android:id="@+id/fabIconPreview"
+                    layout="@layout/floating_scan_button"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_gravity="center" />
+
+            </FrameLayout>
+
+            <com.lollipop.clip.RoundClipLayout
+                android:id="@+id/fabEnableItem"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:background="#FFF"
+                android:paddingHorizontal="12dp"
+                android:paddingVertical="12dp"
+                android:radius="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0px"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical|start"
+                        android:layout_weight="1"
+                        android:text="@string/title_settings_fab_enable"
+                        android:textSize="16sp" />
+
+                    <com.google.android.material.materialswitch.MaterialSwitch
+                        android:id="@+id/fabEnableSwitch"
+                        android:layout_width="wrap_content"
+                        app:thumbTint="#f00"
+                        app:trackTint="#0f0"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end|center_vertical" />
+
+                </LinearLayout>
+
+            </com.lollipop.clip.RoundClipLayout>
+
+            <com.lollipop.clip.RoundClipLayout
+                android:id="@+id/fabSizeItem"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:background="#FFF"
+                android:paddingHorizontal="12dp"
+                android:paddingVertical="12dp"
+                android:radius="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical|start"
+                        android:text="@string/title_settings_fab_size"
+                        android:textSize="16sp" />
+
+                    <com.google.android.material.slider.Slider
+                        android:id="@+id/fabSizeSlider"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end|center_vertical"
+                        android:stepSize="1.0"
+                        android:value="48"
+                        android:valueFrom="32"
+                        android:valueTo="68"
+                        app:tickVisible="false" />
+                </LinearLayout>
+
+            </com.lollipop.clip.RoundClipLayout>
+
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>

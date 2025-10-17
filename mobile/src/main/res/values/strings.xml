@@ -1,0 +1,157 @@
+<resources>
+    <string name="app_name">lQR</string>
+    <string name="from_photo">Photo</string>
+    <string name="create_qr_code">Generate</string>
+    <string name="title_main">Lollipop QR</string>
+    <string name="copy">Copy</string>
+    <string name="share">Share</string>
+    <string name="open">Open</string>
+    <string name="copied">Copied</string>
+    <string name="copied_wifi">Password copied, %1$s</string>
+
+    <string name="code_calendar_event">Schedule</string>
+    <string name="code_contact">Business card</string>
+    <string name="code_driver_license">Driver license</string>
+    <string name="code_email">E-mail</string>
+    <string name="code_geo_point">Geographical location</string>
+    <string name="code_isbn">Book number</string>
+    <string name="code_phone">Contact number</string>
+    <string name="code_product">Product number</string>
+    <string name="code_sms">SMS</string>
+    <string name="code_text">Text</string>
+    <string name="code_url">URL</string>
+    <string name="code_wifi">WiFi</string>
+    <string name="save">Save</string>
+
+    <string name="warning_qr_content_length">It is not recommended that the QR code content be too long, it is recommended to be within %1$d, currently it is %2$d</string>
+
+    <string name="tab_content">Content</string>
+    <string name="tab_position_detection">Anchor point</string>
+    <string name="tab_alignment">Auxiliary point</string>
+    <string name="tab_data_point">data point</string>
+    <string name="tab_background">Background</string>
+    <string name="tab_corner">corner</string>
+    <string name="title_privacy_agreement">Privacy Agreement</string>
+    <string name="hint_camera_permission">You have not authorized the permission to use the camera. \nWe cannot obtain image information through the camera for display and analysis. </string>
+    <string name="authorization">Authorization</string>
+
+    <string name="title_about">About</string>
+    <string name="art_guidance">Art Director: Andrew</string>
+    <string name="developer">Developer: Lollipop</string>
+    <string name="title_content_builder">Content generation</string>
+    <string name="refuse">Reject agreement</string>
+    <string name="agree">Agree to the agreement</string>
+    <string name="hint_input_value">…</string>
+
+    <string name="email_address">Address</string>
+    <string name="email_subject">Title</string>
+    <string name="email_message">Content</string>
+
+    <string name="phone_number">Phone number</string>
+    <string name="sms_message">SMS content</string>
+
+    <string name="contact_prefix_name">Prefix</string>
+    <string name="contact_first_name">Last name</string>
+    <string name="contact_middle_name">Middle name</string>
+    <string name="contact_last_name">last name</string>
+    <string name="contact_suffix_name">Suffix</string>
+    <string name="contact_pronunciation_name">Pronunciation</string>
+
+    <string name="contact_organization">Organization</string>
+
+    <string name="contact_title">Title</string>
+
+    <string name="contact_phone_1">Phone 1</string>
+    <string name="contact_phone_2">Phone 2</string>
+    <string name="contact_phone_3">Phone 3</string>
+
+    <string name="contact_url_1">URL️ 1</string>
+    <string name="contact_url_2">URL️ 2</string>
+    <string name="contact_url_3">URL️ 3</string>
+
+    <string name="contact_email_1">Email 1</string>
+    <string name="contact_email_2">Email 2</string>
+    <string name="contact_email_3">Email 3</string>
+
+    <string name="contact_address_1">Address 1</string>
+    <string name="contact_address_2">Address 2</string>
+    <string name="contact_address_3">Address 3</string>
+
+    <string name="quick_scan">Scan code</string>
+
+    <string name="wifi_ssid">Name (SSID)</string>
+    <string name="wifi_pwd">Password</string>
+    <string name="wifi_user">User (optional)</string>
+    <string name="calendar_summary">Summary</string>
+
+    <string name="content_builder_date">%1$s/%2$s/%3$s</string>
+    <string name="content_builder_time">%1$s:%2$s</string>
+    <string name="calendar_start_time">Start time</string>
+    <string name="calendar_end_time">End time</string>
+    <string name="calendar_description">Content</string>
+    <string name="calendar_location">Address</string>
+    <string name="calendar_organizer">Organizer</string>
+    <string name="calendar_status">Status</string>
+    <string name="geo_lat">Latitude</string>
+    <string name="geo_lng">Longitude</string>
+    <string name="btn_content_builder">Build content</string>
+    <string name="btn_content_done">Done</string>
+    <string name="toast_error_create_qr_bitmap">Failed to create QR code image</string>
+    <string name="toast_error_save_qr_bitmap">Failed to save QR code image</string>
+
+    <string name="message_qr_check_result_success">QR code detection is successful and can be accurately identified</string>
+    <string name="message_qr_check_result_error">QR code detection failed, maybe the QR code is not easy to recognize, maybe there is an error during the detection process</string>
+    <string name="message_qr_check_result_empty">You need to create a QR code before you can start detection</string>
+
+    <string name="known">Got it</string>
+    <string name="confirm">Confirm</string>
+    <string name="weight_mode">Proportional mode</string>
+    <string name="garbled">garbled?</string>
+
+    <string name="radius_none">None</string>
+
+    <string name="corner_left_top">Top left corner</string>
+    <string name="corner_left_bottom">Lower left corner</string>
+    <string name="corner_right_top">Top right corner</string>
+    <string name="corner_right_bottom">Bottom right corner</string>
+    <string name="position_left_top">Top left corner</string>
+    <string name="position_right_top">Top right corner</string>
+    <string name="position_left_bottom">Lower left corner</string>
+    <string name="size">size</string>
+    <string name="corner">Rounded corners</string>
+
+    <string name="title_floating_scan_settings">Floating Scan Settings</string>
+
+    <string name="dialog_title_floating_permission">Floating Window Permission</string>
+
+    <string name="dialog_summary_floating_permission">Please authorize the use of floating window permission. Used to display floating buttons on the screen. </string>
+
+    <string name="dialog_title_recording_permission">Screen Recording Permission</string>
+
+    <string name="dialog_summary_recording_permission">Please authorize the use of screen recording permission to obtain the QR code content on the screen. </string>
+
+    <string name="dialog_agree">Agree</string>
+
+    <string name="dialog_refuse">Reject</string>
+
+    <string name="dialog_title_notification_permission">Notification Permission</string>
+
+    <string name="dialog_summary_notification_permission_rejected">You have not granted notification permission, please authorize the use of notification permission, otherwise you may miss some notifications. </string>
+
+    <string name="notification_content_scan_floating">Global QR code scanning service is running</string>
+    <string name="notification_channel_scan_floating">Global scanning service</string>
+
+    <string name="notification_content_scan_result">Scan result display</string>
+    <string name="notification_channel_scan_result">Scan result</string>
+
+    <string name="notification_action_stop_floating">Stop</string>
+    <string name="notification_action_show_floating">Show button</string>
+    <string name="notification_action_hide_floating">Hide button</string>
+
+    <string name="toast_screenshot_result_failure">Screen scan error, %1$s</string>
+    <string name="toast_screenshot_result_no_available">Screen scan is not ready</string>
+    <string name="toast_screenshot_result_unknown_error">Screen scan has an unknown error</string>
+    <string name="title_settings_fab_enable">Show screen scan button</string>
+    <string name="title_settings_fab_size">Floating button size</string>
+
+</resources>

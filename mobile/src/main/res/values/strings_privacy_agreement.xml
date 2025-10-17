@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="privacy_agreement_label1">Privacy Agreement</string>
+    <string name="privacy_agreement_content1">We take your privacy very seriously and this privacy agreement explains how we collect, use and protect your personal information. </string>
+    <string name="privacy_agreement_label2">Information collected</string>
+    <string name="privacy_agreement_content2">Our QR code scanning software will only request camera permissions to enable you to use its functionality to scan QR codes. We will not actively obtain or collect any of your personal information, and our software does not have networking capabilities. We also will not share, sell or transfer any information about you to any third party. </string>
+    <string name="privacy_agreement_label3">Means of use</string>
+    <string name="privacy_agreement_content3">The QR code we scan may contain URL links, email addresses, phone numbers or other contact information. This information will only be used for you to jump to the corresponding application or contact information after scanning. on and will not be stored on our servers. </string>
+    <string name="privacy_agreement_label4">Information security</string>
+    <string name="privacy_agreement_content4">We take reasonable security measures to protect your personal information from loss, misuse, unauthorized access, disclosure, alteration or damage. We only allow necessary authorized employees to access the information we collect, and they are required to comply with confidentiality obligations. </string>
+    <string name="privacy_agreement_label5">Update privacy policy</string>
+    <string name="privacy_agreement_content5">We may update this privacy agreement from time to time based on program updates, changes in laws and regulations, or other reasons. We will notify our users before updates take effect and post updated information on this page. </string>
+    <string name="privacy_agreement_label6">Contact us</string>
+    <string name="privacy_agreement_content6">If you have any questions or issues about this privacy agreement, please contact us via our official email and social media</string>
+</resources>
