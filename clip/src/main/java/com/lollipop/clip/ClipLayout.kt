@@ -39,7 +39,7 @@ abstract class ClipLayout @JvmOverloads constructor(
             invalidate()
         }
 
-    var isOutlineMode = true
+    var isOutlineMode = false
         set(value) {
             field = value
             onOutlineModeChanged()

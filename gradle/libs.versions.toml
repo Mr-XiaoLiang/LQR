@@ -5,11 +5,11 @@ coreKtx = "1.17.0"
 appcompat = "1.7.1"
 material = "1.13.0"
 barcodeScanning = "17.3.0"
-cameraCamera2 = "1.4.2"
+cameraCamera2 = "1.5.1"
 zxingcore = "3.5.3"
 kotlinStdlib = "2.2.20"
 constraintlayout = "2.2.1"
-glide = "4.15.0"
+glide = "5.0.5"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }

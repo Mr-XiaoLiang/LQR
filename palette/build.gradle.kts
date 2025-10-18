@@ -7,7 +7,7 @@ plugins {
 }
 
 android {
-    compileSdk = 34
+    compileSdk = 36
     namespace = "com.lollipop.palette"
     defaultConfig {
         minSdk = 26

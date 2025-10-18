@@ -13,8 +13,8 @@ android {
         applicationId = "com.lollipop.qr"
         minSdk = 27
         targetSdk = 36
-        versionCode = 2_09_00
-        versionName = "2.9.0"
+        versionCode = 3_00_00
+        versionName = "3.0.0"
     }
 
     buildTypes {

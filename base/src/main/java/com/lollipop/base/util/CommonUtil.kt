@@ -11,14 +11,19 @@ import android.os.Looper
 import android.text.TextUtils
 import android.util.Log
 import android.util.TypedValue
-import android.view.*
+import android.view.KeyEvent
+import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import androidx.annotation.ChecksSdkIntAtLeast
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
-import java.io.*
+import java.io.ByteArrayInputStream
+import java.io.File
+import java.io.FileOutputStream
+import java.io.InputStream
+import java.io.OutputStream
 import java.lang.ref.WeakReference
 import java.util.concurrent.Executor
 import java.util.concurrent.Executors
@@ -468,7 +473,7 @@ fun Int.range(min: Int, max: Int): Int {
  * 从context中获取当前应用的版本名称
  */
 fun Context.versionName(): String {
-    return packageManager.getPackageInfo(packageName, 0).versionName
+    return packageManager.getPackageInfo(packageName, 0).versionName ?: ""
 }
 
 /**

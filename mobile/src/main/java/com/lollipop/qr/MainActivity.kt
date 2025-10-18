@@ -3,11 +3,11 @@ package com.lollipop.qr
 import android.content.Intent
 import android.content.res.ColorStateList
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.util.Size
 import android.view.View
 import android.widget.ImageView
-import androidx.activity.OnBackPressedCallback
 import androidx.core.content.PermissionChecker
 import androidx.core.view.isVisible
 import androidx.drawerlayout.widget.DrawerLayout
@@ -21,15 +21,14 @@ import com.lollipop.filechooser.FileChooser
 import com.lollipop.filechooser.FileMime
 import com.lollipop.insets.WindowInsetsEdge
 import com.lollipop.insets.fixInsetsByPadding
+import com.lollipop.pigment.Pigment
 import com.lollipop.qr.base.ScanResultActivity
+import com.lollipop.qr.comm.BarcodeResult
 import com.lollipop.qr.databinding.ActivityMainBinding
 import com.lollipop.qr.floating.FloatingScanHelper
 import com.lollipop.qr.floating.MediaProjectionHelper
 import com.lollipop.qr.other.AppSettings
 import com.lollipop.qr.other.PrivacyAgreementActivity
-import com.lollipop.pigment.Pigment
-import com.lollipop.qr.BarcodeHelper
-import com.lollipop.qr.comm.BarcodeResult
 import com.lollipop.qr.view.FocusAnimationHelper
 
 class MainActivity : ScanResultActivity() {
@@ -115,7 +114,6 @@ class MainActivity : ScanResultActivity() {
 
         binding.createBtn.onClick {
             startActivity(Intent(this, CreatorActivity::class.java))
-//            Toast.makeText(this, "在做了在做了", Toast.LENGTH_SHORT).show()
         }
         binding.permissionView.onClick {
             requestPermissions(

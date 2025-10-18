@@ -7,7 +7,7 @@ plugins {
 
 android {
     namespace = "com.lollipop.widget"
-    compileSdk = 34
+    compileSdk = 36
 
     defaultConfig {
         minSdk = 26

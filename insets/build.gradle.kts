@@ -7,7 +7,7 @@ plugins {
 
 android {
     namespace = "com.lollipop.insets"
-    compileSdk = 34
+    compileSdk = 36
 
     defaultConfig {
         minSdk = 21
