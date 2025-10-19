@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,156 +8,158 @@
     tools:background="#30f0"
     tools:context=".CreatorActivity">
 
-    <LinearLayout
-        android:id="@+id/actionBar"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
+    <FrameLayout
+        android:id="@+id/previewPanel"
+        android:layout_width="0px"
+        android:layout_height="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintWidth_percent="0.5">
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/backButton"
-            android:layout_width="48dp"
+            android:id="@+id/previewImageView"
+            android:layout_width="184dp"
+            android:layout_height="184dp"
+            android:layout_gravity="center"
+            android:scaleType="fitCenter"
+            tools:src="#3f00" />
+
+        <LinearLayout
+            android:id="@+id/actionBar"
+            android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:layout_gravity="center_vertical|start"
-            android:layout_marginStart="16dp"
-            android:padding="12dp"
-            android:src="@drawable/ic_baseline_arrow_back_24"
-            app:tint="?attr/colorOnBackground" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/titleView"
-            android:layout_width="0px"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ellipsize="end"
-            android:lines="1"
-            android:maxLines="1"
-            android:text="@string/title_main"
-            android:textColor="?attr/colorOnBackground"
-            android:textSize="20sp"
-            app:fontFamily="@font/font_logo" />
-
-        <FrameLayout
-            android:id="@+id/resultCheckBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <com.lollipop.clip.RoundClipLayout
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_marginHorizontal="12dp"
-                android:layout_marginVertical="12dp"
-                android:radius="12dp">
-
-                <com.lollipop.faceicon.FaceIconView
-                    android:id="@+id/faceIconView"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:padding="2dp"
-                    app:strokeWidth="2dp"
-                    tools:background="#3f00"
-                    tools:faceColor="#f00"
-                    tools:faceIcon="happy" />
-            </com.lollipop.clip.RoundClipLayout>
-        </FrameLayout>
-
-        <com.lollipop.clip.RoundClipLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:radius="28dp">
-
-            <LinearLayout
-                android:id="@+id/saveBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="?attr/colorSecondary"
-                android:foreground="?attr/selectableItemBackground"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:paddingHorizontal="12dp"
-                android:paddingVertical="8dp">
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/saveBtnIcon"
-                    android:layout_width="16dp"
-                    android:layout_height="16dp"
-                    android:src="@drawable/ic_baseline_share_24"
-                    app:tint="?attr/colorOnSecondary" />
-
-                <TextView
-                    android:id="@+id/saveBtnText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:text="@string/save"
-                    android:textColor="?attr/colorOnSecondary"
-                    android:textSize="16sp" />
-            </LinearLayout>
-
-        </com.lollipop.clip.RoundClipLayout>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
-        <FrameLayout
-            android:layout_width="0px"
-            android:layout_weight="1"
-            android:layout_height="match_parent">
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
             <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/previewImageView"
-                android:layout_width="184dp"
-                android:layout_height="184dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="16dp"
-                android:scaleType="fitCenter"
-                tools:src="#3f00" />
+                android:id="@+id/backButton"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_gravity="center_vertical|start"
+                android:padding="12dp"
+                android:src="@drawable/ic_baseline_arrow_back_24"
+                app:tint="?attr/colorOnBackground" />
 
-            <com.google.android.material.progressindicator.CircularProgressIndicator
-                android:id="@+id/contentLoadingView"
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/titleView"
+                android:layout_width="0px"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:lines="1"
+                android:maxLines="1"
+                android:text="@string/title_main"
+                android:textColor="?attr/colorOnBackground"
+                android:textSize="20sp"
+                app:fontFamily="@font/font_logo" />
+
+            <FrameLayout
+                android:id="@+id/resultCheckBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <com.lollipop.clip.RoundClipLayout
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginHorizontal="12dp"
+                    android:layout_marginVertical="12dp"
+                    android:radius="12dp">
+
+                    <com.lollipop.faceicon.FaceIconView
+                        android:id="@+id/faceIconView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:padding="2dp"
+                        app:strokeWidth="2dp"
+                        tools:background="#3f00"
+                        tools:faceColor="#f00"
+                        tools:faceIcon="happy" />
+                </com.lollipop.clip.RoundClipLayout>
+            </FrameLayout>
+
+            <com.lollipop.clip.RoundClipLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="24dp"
-                android:indeterminate="true"
-                app:indicatorColor="@color/brand_4"
-                app:indicatorSize="24dp"
-                app:minHideDelay="300"
-                app:showDelay="300" />
-        </FrameLayout>
+                android:layout_marginEnd="16dp"
+                android:radius="28dp">
 
-        <com.lollipop.clip.RoundClipLayout
-            android:layout_width="0px"
-            android:layout_weight="1"
+                <LinearLayout
+                    android:id="@+id/saveBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="?attr/colorSecondary"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="8dp">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/saveBtnIcon"
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:src="@drawable/ic_baseline_share_24"
+                        app:tint="?attr/colorOnSecondary" />
+
+                    <TextView
+                        android:id="@+id/saveBtnText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="@string/save"
+                        android:textColor="?attr/colorOnSecondary"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+            </com.lollipop.clip.RoundClipLayout>
+
+        </LinearLayout>
+
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+            android:id="@+id/contentLoadingView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="48dp"
+            android:indeterminate="true"
+            app:indicatorColor="@color/brand_4"
+            app:indicatorSize="24dp"
+            app:minHideDelay="300"
+            app:showDelay="300" />
+
+    </FrameLayout>
+
+    <com.lollipop.clip.RoundClipLayout
+        android:id="@+id/adjustPanel"
+        android:layout_width="0px"
+        android:layout_height="0px"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="0.5"
+        app:leftTop="20dp"
+        app:rightTop="20dp">
+
+        <LinearLayout
+            android:id="@+id/panelGroup"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:leftTop="20dp"
-            app:rightTop="20dp">
+            android:orientation="vertical">
 
-            <LinearLayout
-                android:id="@+id/panelGroup"
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/subpageGroup"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:layout_height="0px"
+                android:layout_weight="1" />
 
-                <androidx.viewpager2.widget.ViewPager2
-                    android:layout_width="match_parent"
-                    android:layout_height="0px"
-                    android:layout_weight="1"
-                    android:id="@+id/subpageGroup"/>
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tabLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:tabGravity="start"
+                app:tabMode="scrollable" />
+        </LinearLayout>
 
-                <com.google.android.material.tabs.TabLayout
-                    android:id="@+id/tabLayout"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-            </LinearLayout>
+    </com.lollipop.clip.RoundClipLayout>
 
-        </com.lollipop.clip.RoundClipLayout>
-
-    </LinearLayout>
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

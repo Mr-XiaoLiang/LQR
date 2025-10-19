@@ -1,10 +1,15 @@
 package com.lollipop.qr
 
 import android.content.res.ColorStateList
+import android.content.res.Configuration
 import android.graphics.Bitmap
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.core.view.OnApplyWindowInsetsListener
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.isInvisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
@@ -26,8 +31,10 @@ import com.lollipop.filechooser.FileChooseResult
 import com.lollipop.filechooser.FileChooser
 import com.lollipop.filechooser.FileMime
 import com.lollipop.insets.WindowInsetsEdge
-import com.lollipop.insets.fitsSystemWindows
+import com.lollipop.insets.WindowInsetsEdgeStrategy
 import com.lollipop.insets.fixInsetsByPadding
+import com.lollipop.pigment.BlendMode
+import com.lollipop.pigment.Pigment
 import com.lollipop.qr.base.ColorModeActivity
 import com.lollipop.qr.base.PigmentTheme
 import com.lollipop.qr.creator.QrContentInputPopupWindow
@@ -50,9 +57,8 @@ import com.lollipop.qr.creator.subpage.QrPositionDetectionFragment
 import com.lollipop.qr.creator.writer.QrWriter
 import com.lollipop.qr.creator.writer.background.BackgroundWriterLayer
 import com.lollipop.qr.databinding.ActivityCreatorBinding
-import com.lollipop.pigment.BlendMode
-import com.lollipop.pigment.Pigment
 import java.io.File
+
 
 class CreatorActivity : ColorModeActivity(),
     QrContentValueFragment.Callback,
@@ -93,9 +99,8 @@ class CreatorActivity : ColorModeActivity(),
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(binding.root)
-        binding.root.fixInsetsByPadding(WindowInsetsEdge.HEADER)
         bindByBack(binding.backButton)
-        binding.panelGroup.fixInsetsByPadding(WindowInsetsEdge.BOTTOM)
+        bindInsets()
         binding.subpageGroup.adapter = SubPageAdapter(this)
         TabLayoutMediator(
             binding.tabLayout,
@@ -117,7 +122,19 @@ class CreatorActivity : ColorModeActivity(),
         onLoadStatusChanged(false)
 
         creatorHelper.contentValue = savedInstanceState?.getString(STATE_QR_VALUE, "") ?: ""
+    }
 
+    private fun bindInsets() {
+        val configuration = getResources().configuration // 获取设置的配置信息
+        val ori: Int = configuration.orientation // 获取屏幕方向
+        val isLand = ori == Configuration.ORIENTATION_LANDSCAPE
+        if (isLand) {
+            binding.previewPanel.fixInsetsByPadding(WindowInsetsEdge.ALL.baseTo(right = WindowInsetsEdgeStrategy.ORIGINAL))
+            binding.panelGroup.fixInsetsByPadding(WindowInsetsEdge.ALL.baseTo(left = WindowInsetsEdgeStrategy.ORIGINAL))
+        } else {
+            binding.root.fixInsetsByPadding(WindowInsetsEdge.HEADER)
+            binding.panelGroup.fixInsetsByPadding(WindowInsetsEdge.BOTTOM)
+        }
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
