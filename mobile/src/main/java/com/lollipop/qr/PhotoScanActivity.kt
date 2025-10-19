@@ -11,14 +11,13 @@ import android.widget.ImageView
 import androidx.core.view.isVisible
 import com.bumptech.glide.Glide
 import com.lollipop.base.util.lazyBind
-import com.lollipop.insets.WindowInsetsEdge
-import com.lollipop.insets.WindowInsetsHelper
-import com.lollipop.insets.fixInsetsByPadding
-import com.lollipop.qr.base.ScanResultActivity
-import com.lollipop.qr.databinding.ActivityPhotoScanBinding
+import com.lollipop.insets.LInsets
+import com.lollipop.insets.WindowInsetsType
+import com.lollipop.insets.applyWindowInsets
 import com.lollipop.pigment.Pigment
-import com.lollipop.qr.BarcodeHelper
+import com.lollipop.qr.base.ScanResultActivity
 import com.lollipop.qr.comm.BarcodeResult
+import com.lollipop.qr.databinding.ActivityPhotoScanBinding
 import kotlin.random.Random
 
 class PhotoScanActivity : ScanResultActivity() {
@@ -60,7 +59,17 @@ class PhotoScanActivity : ScanResultActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding.root.fixInsetsByPadding(WindowInsetsEdge.ALL)
+        binding.root.applyWindowInsets { view, snapshot, insets ->
+            val padding = snapshot.padding.maxOf(
+                LInsets.maxOf(insets, WindowInsetsType.SystemBars, WindowInsetsType.DisplayCutout)
+            )
+            view.setPadding(
+                padding.left,
+                padding.top,
+                padding.right,
+                padding.bottom
+            )
+        }
         binding.progressIndicator.show()
         bindResult(barcodeReader)
         bindSelectionView(binding.resultImageView, ImageView.ScaleType.FIT_CENTER)

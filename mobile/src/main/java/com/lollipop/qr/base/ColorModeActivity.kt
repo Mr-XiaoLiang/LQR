@@ -3,14 +3,14 @@ package com.lollipop.qr.base
 import android.content.res.Configuration
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import com.lollipop.insets.WindowInsetsHelper
 import com.lollipop.base.util.isResumed
-import com.lollipop.qr.QrApplication
+import com.lollipop.insets.LInsets
 import com.lollipop.pigment.BlendMode
 import com.lollipop.pigment.Pigment
 import com.lollipop.pigment.PigmentPage
 import com.lollipop.pigment.PigmentProvider
 import com.lollipop.pigment.PigmentProviderHelper
+import com.lollipop.qr.QrApplication
 
 open class ColorModeActivity : AppCompatActivity(), PigmentPage, PigmentProvider {
 
@@ -46,7 +46,7 @@ open class ColorModeActivity : AppCompatActivity(), PigmentPage, PigmentProvider
         }
 
     protected open fun updateStatusBar(isDark: Boolean) {
-        WindowInsetsHelper.getController(this).isAppearanceLightStatusBars = !isDark
+        LInsets.getController(this).isAppearanceLightStatusBars = !isDark
     }
 
     override fun onConfigurationChanged(newConfig: Configuration) {

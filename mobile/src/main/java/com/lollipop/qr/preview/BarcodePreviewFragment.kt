@@ -19,10 +19,14 @@ import com.lollipop.base.util.ShareSheet
 import com.lollipop.base.util.changeAlpha
 import com.lollipop.base.util.checkCallback
 import com.lollipop.base.util.onClick
-import com.lollipop.insets.WindowInsetsEdge
-import com.lollipop.insets.fixInsetsByPadding
+import com.lollipop.insets.LInsets
+import com.lollipop.insets.WindowInsetsType
+import com.lollipop.insets.applyWindowInsets
+import com.lollipop.pigment.Pigment
 import com.lollipop.qr.R
 import com.lollipop.qr.base.BaseFragment
+import com.lollipop.qr.comm.BarcodeInfo
+import com.lollipop.qr.comm.BarcodeWrapper
 import com.lollipop.qr.databinding.FragmentBarcodePreviewBinding
 import com.lollipop.qr.other.CharsetMenuDialog
 import com.lollipop.qr.router.CalendarEventRouter
@@ -32,9 +36,6 @@ import com.lollipop.qr.router.GeoRouter
 import com.lollipop.qr.router.PhoneRouter
 import com.lollipop.qr.router.SmsRouter
 import com.lollipop.qr.router.WifiRouter
-import com.lollipop.pigment.Pigment
-import com.lollipop.qr.comm.BarcodeInfo
-import com.lollipop.qr.comm.BarcodeWrapper
 import java.nio.charset.Charset
 
 class BarcodePreviewFragment : BaseFragment() {
@@ -107,8 +108,36 @@ class BarcodePreviewFragment : BaseFragment() {
                 }
                 hide()
             }
-            infoCard.fixInsetsByPadding(WindowInsetsEdge.BOTTOM)
-            cardGroup.fixInsetsByPadding(WindowInsetsEdge.ALL)
+            infoCard.applyWindowInsets { view, snapshot, insets ->
+                val padding = snapshot.padding.maxOf(
+                    LInsets.maxOf(
+                        insets,
+                        WindowInsetsType.DisplayCutout,
+                        WindowInsetsType.SystemBars
+                    )
+                )
+                view.setPadding(
+                    0,
+                    0,
+                    0,
+                    padding.bottom
+                )
+            }
+            cardGroup.applyWindowInsets { view, snapshot, insets ->
+                val padding = snapshot.padding.maxOf(
+                    LInsets.maxOf(
+                        insets,
+                        WindowInsetsType.DisplayCutout,
+                        WindowInsetsType.SystemBars
+                    )
+                )
+                view.setPadding(
+                    padding.left,
+                    padding.top,
+                    padding.right,
+                    padding.bottom
+                )
+            }
         }
 
         updateCharsetButton()

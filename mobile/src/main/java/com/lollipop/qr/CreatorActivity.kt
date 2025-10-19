@@ -4,12 +4,8 @@ import android.content.res.ColorStateList
 import android.content.res.Configuration
 import android.graphics.Bitmap
 import android.os.Bundle
-import android.view.View
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
-import androidx.core.view.OnApplyWindowInsetsListener
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.isInvisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
@@ -30,9 +26,9 @@ import com.lollipop.faceicon.FaceIcons
 import com.lollipop.filechooser.FileChooseResult
 import com.lollipop.filechooser.FileChooser
 import com.lollipop.filechooser.FileMime
-import com.lollipop.insets.WindowInsetsEdge
-import com.lollipop.insets.WindowInsetsEdgeStrategy
-import com.lollipop.insets.fixInsetsByPadding
+import com.lollipop.insets.LInsets
+import com.lollipop.insets.WindowInsetsType
+import com.lollipop.insets.applyWindowInsets
 import com.lollipop.pigment.BlendMode
 import com.lollipop.pigment.Pigment
 import com.lollipop.qr.base.ColorModeActivity
@@ -129,11 +125,67 @@ class CreatorActivity : ColorModeActivity(),
         val ori: Int = configuration.orientation // 获取屏幕方向
         val isLand = ori == Configuration.ORIENTATION_LANDSCAPE
         if (isLand) {
-            binding.previewPanel.fixInsetsByPadding(WindowInsetsEdge.ALL.baseTo(right = WindowInsetsEdgeStrategy.ORIGINAL))
-            binding.panelGroup.fixInsetsByPadding(WindowInsetsEdge.ALL.baseTo(left = WindowInsetsEdgeStrategy.ORIGINAL))
+            binding.previewPanel.applyWindowInsets { view, snapshot, insets ->
+                val padding = snapshot.padding.maxOf(
+                    LInsets.maxOf(
+                        insets,
+                        WindowInsetsType.SystemBars,
+                        WindowInsetsType.DisplayCutout
+                    )
+                )
+                view.setPadding(
+                    padding.left,
+                    padding.top,
+                    0,
+                    padding.bottom
+                )
+            }
+            binding.panelGroup.applyWindowInsets { view, snapshot, insets ->
+                val padding = snapshot.padding.maxOf(
+                    LInsets.maxOf(
+                        insets,
+                        WindowInsetsType.SystemBars,
+                        WindowInsetsType.DisplayCutout
+                    )
+                )
+                view.setPadding(
+                    0,
+                    padding.top,
+                    padding.right,
+                    padding.bottom
+                )
+            }
         } else {
-            binding.root.fixInsetsByPadding(WindowInsetsEdge.HEADER)
-            binding.panelGroup.fixInsetsByPadding(WindowInsetsEdge.BOTTOM)
+            binding.previewPanel.applyWindowInsets { view, snapshot, insets ->
+                val padding = snapshot.padding.maxOf(
+                    LInsets.maxOf(
+                        insets,
+                        WindowInsetsType.SystemBars,
+                        WindowInsetsType.DisplayCutout
+                    )
+                )
+                view.setPadding(
+                    padding.left,
+                    padding.top,
+                    padding.right,
+                    0
+                )
+            }
+            binding.panelGroup.applyWindowInsets { view, snapshot, insets ->
+                val padding = snapshot.padding.maxOf(
+                    LInsets.maxOf(
+                        insets,
+                        WindowInsetsType.SystemBars,
+                        WindowInsetsType.DisplayCutout
+                    )
+                )
+                view.setPadding(
+                    padding.left,
+                    0,
+                    padding.right,
+                    padding.bottom
+                )
+            }
         }
     }
 

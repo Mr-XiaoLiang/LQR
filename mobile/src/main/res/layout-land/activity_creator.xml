@@ -12,7 +12,7 @@
         android:id="@+id/previewPanel"
         android:layout_width="0px"
         android:layout_height="match_parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintWidth_percent="0.5">
 
         <androidx.appcompat.widget.AppCompatImageView
@@ -134,7 +134,7 @@
         android:layout_width="0px"
         android:layout_height="0px"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintWidth_percent="0.5"
         app:leftTop="20dp"

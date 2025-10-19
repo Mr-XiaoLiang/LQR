@@ -3,20 +3,18 @@ package com.lollipop.qr.other
 import android.content.Intent
 import android.content.res.ColorStateList
 import android.graphics.Color
-import android.net.Uri
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
-import com.lollipop.insets.WindowInsetsEdge
-import com.lollipop.insets.WindowInsetsHelper
-import com.lollipop.insets.fixInsetsByPadding
+import androidx.core.net.toUri
 import com.lollipop.base.util.lazyBind
 import com.lollipop.base.util.richtext.RichText
 import com.lollipop.base.util.versionName
-import com.lollipop.insets.fitsSystemWindows
+import com.lollipop.insets.LInsets
+import com.lollipop.insets.WindowInsetsType
+import com.lollipop.insets.applyWindowInsets
+import com.lollipop.pigment.Pigment
 import com.lollipop.qr.base.ColorModeActivity
 import com.lollipop.qr.databinding.ActivityAboutBinding
-import com.lollipop.pigment.Pigment
-import androidx.core.net.toUri
 
 
 class AboutActivity : ColorModeActivity() {
@@ -27,8 +25,34 @@ class AboutActivity : ColorModeActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(binding.root)
-        binding.actionBar.fixInsetsByPadding(WindowInsetsEdge.HEADER)
-        binding.contentGroup.fixInsetsByPadding(WindowInsetsEdge.CONTENT)
+        binding.actionBar.applyWindowInsets { view, snapshot, insets ->
+            val padding = snapshot.padding.maxOf(
+                LInsets.maxOf(
+                    insets, WindowInsetsType.SystemBars,
+                    WindowInsetsType.DisplayCutout
+                )
+            )
+            view.setPadding(
+                padding.left,
+                padding.top,
+                padding.right,
+                0
+            )
+        }
+        binding.contentGroup.applyWindowInsets { view, snapshot, insets ->
+            val padding = snapshot.padding.maxOf(
+                LInsets.maxOf(
+                    insets, WindowInsetsType.SystemBars,
+                    WindowInsetsType.DisplayCutout
+                )
+            )
+            view.setPadding(
+                padding.left,
+                0,
+                padding.right,
+                padding.bottom
+            )
+        }
         binding.versionView.text = versionName()
         bindByBack(binding.backButton)
 

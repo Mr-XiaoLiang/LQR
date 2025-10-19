@@ -4,13 +4,14 @@ import android.content.res.ColorStateList
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import com.lollipop.base.util.lazyBind
-import com.lollipop.insets.WindowInsetsEdge
-import com.lollipop.insets.fixInsetsByPadding
+import com.lollipop.insets.LInsets
+import com.lollipop.insets.WindowInsetsType
+import com.lollipop.insets.applyWindowInsets
+import com.lollipop.pigment.Pigment
+import com.lollipop.pigment.PigmentTint
 import com.lollipop.qr.base.ColorModeActivity
 import com.lollipop.qr.databinding.ActivityFloatingScanSettingsBinding
 import com.lollipop.qr.other.AppSettings
-import com.lollipop.pigment.Pigment
-import com.lollipop.pigment.PigmentTint
 
 class FloatingScanSettingsActivity : ColorModeActivity() {
 
@@ -20,8 +21,26 @@ class FloatingScanSettingsActivity : ColorModeActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(binding.root)
-        binding.actionBar.fixInsetsByPadding(WindowInsetsEdge.HEADER)
-        binding.contentGroup.fixInsetsByPadding(WindowInsetsEdge.CONTENT)
+        binding.actionBar.applyWindowInsets { view, snapshot, insets ->
+            val padding = snapshot.padding.maxOf(
+                LInsets.maxOf(
+                    insets,
+                    WindowInsetsType.SystemBars,
+                    WindowInsetsType.DisplayCutout
+                )
+            )
+            view.setPadding(padding.left, padding.top, padding.right, 0)
+        }
+        binding.contentGroup.applyWindowInsets { view, snapshot, insets ->
+            val padding = snapshot.padding.maxOf(
+                LInsets.maxOf(
+                    insets,
+                    WindowInsetsType.SystemBars,
+                    WindowInsetsType.DisplayCutout
+                )
+            )
+            view.setPadding(padding.left, 0, padding.right, padding.bottom)
+        }
         bindByBack(binding.backButton)
         initView()
     }

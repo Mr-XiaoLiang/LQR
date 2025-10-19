@@ -4,22 +4,22 @@ import android.app.Dialog
 import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.Gravity
 import android.view.ViewGroup
+import androidx.core.graphics.drawable.toDrawable
 import androidx.core.widget.doAfterTextChanged
 import com.lollipop.base.util.lazyBind
 import com.lollipop.base.util.onClick
 import com.lollipop.base.util.requestBoard
-import com.lollipop.insets.WindowInsetsEdge
+import com.lollipop.insets.LInsets
 import com.lollipop.insets.WindowInsetsType
-import com.lollipop.insets.fixInsetsByPadding
+import com.lollipop.insets.applyWindowInsets
+import com.lollipop.pigment.BlendMode
+import com.lollipop.pigment.PigmentWallpaperCenter
 import com.lollipop.qr.R
 import com.lollipop.qr.base.PigmentTheme
 import com.lollipop.qr.databinding.DialogInputBinding
-import com.lollipop.pigment.BlendMode
-import com.lollipop.pigment.PigmentWallpaperCenter
 
 class QrContentInputPopupWindow(context: Context, private val option: Option) : Dialog(context) {
 
@@ -45,10 +45,18 @@ class QrContentInputPopupWindow(context: Context, private val option: Option) : 
         window?.let {
             it.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
             it.setGravity(Gravity.TOP)
-            it.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            it.setBackgroundDrawable(Color.TRANSPARENT.toDrawable())
         }
-        binding.inputContent.fixInsetsByPadding(WindowInsetsEdge.CONTENT).apply {
-            windowInsetsOperator.insetsType = WindowInsetsType.Ime
+        binding.inputContent.applyWindowInsets { view, snapshot, insets ->
+            val padding = snapshot.padding.maxOf(
+                LInsets.maxOf(
+                    insets,
+                    WindowInsetsType.SystemBars,
+                    WindowInsetsType.Ime,
+                    WindowInsetsType.DisplayCutout
+                )
+            )
+            view.setPadding(padding.left, 0, padding.right, padding.bottom)
         }
         binding.inputEditView.setText(option.preset)
         binding.inputEditView.doAfterTextChanged { text ->

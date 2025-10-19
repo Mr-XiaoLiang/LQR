@@ -3,8 +3,8 @@ package com.lollipop.qr
 import android.content.Intent
 import android.content.res.ColorStateList
 import android.net.Uri
-import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.util.Size
 import android.view.View
 import android.widget.ImageView
@@ -19,8 +19,9 @@ import com.lollipop.base.util.registerResult
 import com.lollipop.filechooser.FileChooseResult
 import com.lollipop.filechooser.FileChooser
 import com.lollipop.filechooser.FileMime
-import com.lollipop.insets.WindowInsetsEdge
-import com.lollipop.insets.fixInsetsByPadding
+import com.lollipop.insets.LInsets
+import com.lollipop.insets.WindowInsetsType
+import com.lollipop.insets.applyWindowInsets
 import com.lollipop.pigment.Pigment
 import com.lollipop.qr.base.ScanResultActivity
 import com.lollipop.qr.comm.BarcodeResult
@@ -66,7 +67,25 @@ class MainActivity : ScanResultActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         resultBackPressHandler.bindTo(this)
-        binding.contentPanel.fixInsetsByPadding(WindowInsetsEdge.ALL)
+        binding.contentPanel.applyWindowInsets { view, snapshot, insets ->
+            val padding = snapshot.padding.maxOf(
+                LInsets.maxOf(
+                    insets,
+                    WindowInsetsType.SystemBars,
+                    WindowInsetsType.DisplayCutout
+                )
+            )
+            Log.i(
+                "Lollipop",
+                "MainActivity: padding = $padding"
+            )
+            view.setPadding(
+                padding.left,
+                padding.top,
+                padding.right,
+                padding.bottom
+            )
+        }
         initCamera()
         initView()
     }

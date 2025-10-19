@@ -15,17 +15,18 @@ import com.lollipop.base.util.ActivityLauncherHelper
 import com.lollipop.base.util.bind
 import com.lollipop.base.util.lazyBind
 import com.lollipop.base.util.onClick
-import com.lollipop.insets.WindowInsetsEdge
-import com.lollipop.insets.fixInsetsByPadding
-import com.lollipop.qr.R
-import com.lollipop.qr.base.ColorModeActivity
-import com.lollipop.qr.databinding.ActivityPrivacyAgreementBinding
-import com.lollipop.qr.databinding.ItemPrivacyAgreementBinding
+import com.lollipop.insets.LInsets
+import com.lollipop.insets.WindowInsetsType
+import com.lollipop.insets.applyWindowInsets
 import com.lollipop.pigment.Pigment
 import com.lollipop.pigment.PigmentWallpaperCenter
 import com.lollipop.privacy.PrivacyAgreementAdapter
 import com.lollipop.privacy.PrivacyAgreementHolder
 import com.lollipop.privacy.PrivacyAgreementItem
+import com.lollipop.qr.R
+import com.lollipop.qr.base.ColorModeActivity
+import com.lollipop.qr.databinding.ActivityPrivacyAgreementBinding
+import com.lollipop.qr.databinding.ItemPrivacyAgreementBinding
 
 class PrivacyAgreementActivity : ColorModeActivity() {
 
@@ -46,7 +47,20 @@ class PrivacyAgreementActivity : ColorModeActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(binding.root)
-        binding.root.fixInsetsByPadding(WindowInsetsEdge.ALL)
+        binding.root.applyWindowInsets { view, snapshot, insets ->
+            val padding = snapshot.padding.maxOf(
+                LInsets.maxOf(
+                    insets, WindowInsetsType.SystemBars,
+                    WindowInsetsType.DisplayCutout
+                )
+            )
+            view.setPadding(
+                padding.left,
+                padding.top,
+                padding.right,
+                padding.bottom
+            )
+        }
         bindByBack(binding.backButton)
         binding.recyclerView.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
         binding.recyclerView.adapter = PrivacyAgreementAdapter(getPrivacyAgreement()) {

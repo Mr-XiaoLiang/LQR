@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.content.res.ColorStateList
 import android.os.Bundle
+import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContract
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
@@ -12,11 +13,9 @@ import com.google.android.material.tabs.TabLayoutMediator
 import com.lollipop.base.util.ActivityLauncherHelper
 import com.lollipop.base.util.lazyBind
 import com.lollipop.base.util.onClick
-import com.lollipop.insets.MultipleInsetsDelegate
-import com.lollipop.insets.WindowInsetsEdge
-import com.lollipop.insets.WindowInsetsHelper
+import com.lollipop.insets.LInsets
 import com.lollipop.insets.WindowInsetsType
-import com.lollipop.insets.fixInsetsByMultiple
+import com.lollipop.insets.applyWindowInsets
 import com.lollipop.qr.R
 import com.lollipop.qr.base.ColorModeActivity
 import com.lollipop.qr.creator.content.impl.CalendarEventContentBuilderPage
@@ -48,14 +47,18 @@ class ContentBuilderActivity : ColorModeActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
         setContentView(binding.root)
-        WindowInsetsHelper.fitsSystemWindows(this)
-        binding.root.fixInsetsByMultiple(
-            edge = WindowInsetsEdge.ALL,
-            type = MultipleInsetsDelegate.ApplyType.PADDING,
-            target = null,
-            WindowInsetsType.Ime, WindowInsetsType.SystemBars
-        )
+        binding.root.applyWindowInsets { view, snapshot, insets ->
+            val systemBar = LInsets.maxOf(
+                insets,
+                WindowInsetsType.SystemBars,
+                WindowInsetsType.Ime,
+                WindowInsetsType.DisplayCutout
+            )
+            val padding = snapshot.padding.maxOf(systemBar)
+            view.setPadding(padding.left, padding.top, padding.right, padding.bottom)
+        }
         bindByBack(binding.backButton)
         binding.saveButton.onClick {
             setResult()
